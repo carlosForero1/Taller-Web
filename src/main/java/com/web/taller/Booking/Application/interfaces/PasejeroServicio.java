@@ -5,7 +5,6 @@ import com.web.taller.Booking.Infrastructure.Repositories.PasajeroRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,15 +13,14 @@ public class PasejeroServicio {
     private PasajeroRepositorio repositorio;
 
 
-    public List<Pasajero> buscarPorNombre(String nombre){
+    public Pasajero buscarPorEmail(String email){
         List<Pasajero> lista = repositorio.findAll();
-        List<Pasajero> resultado = new ArrayList<>();
         for (Pasajero pasajero: lista){
-            if (pasajero.getNombre().equals(nombre)){
-                resultado.add(pasajero);
+            if (pasajero.getEmail().equals(email)){
+                return pasajero;
             }
         }
-        return resultado;
+        return null;
     }
 
     public String CrearPasajero(Pasajero pasajero){

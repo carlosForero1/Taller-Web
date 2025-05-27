@@ -1,6 +1,10 @@
 package com.web.taller.Booking.Domain.Entities;
 
+import com.web.taller.Booking.Domain.Entities.EmailEntity;
 import jakarta.persistence.*;
+
+import javax.xml.crypto.Data;
+import java.util.Date;
 
 @Entity
 public class Pasajero {
@@ -9,13 +13,18 @@ public class Pasajero {
     private Long id;
 
     private String nombre;
+
+    private int tipoDocumento;
+    private int cedula;
+
+    private Date fechaNacimiento;
     @OneToOne
-    private Email email;
+    private EmailEntity email;
 
     public Pasajero() {
     }
 
-    public Pasajero(Long id, String nombre, Email email) {
+    public Pasajero(Long id, String nombre, EmailEntity email) {
         this.id = id;
         this.nombre = nombre;
         this.email = email;
@@ -37,11 +46,11 @@ public class Pasajero {
         this.nombre = nombre;
     }
 
-    public Email getEmail() {
+    public EmailEntity getEmail() {
         return email;
     }
 
-    public void setEmail(Email email) {
+    public void setEmail(EmailEntity email) {
         this.email = email;
     }
 

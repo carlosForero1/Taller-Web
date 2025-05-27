@@ -29,6 +29,25 @@ public class Reserva {
         this.reservaEstado = reservaEstado;
     }
 
+    public String  confirmar() {
+        String informacion = "La reserva con id "+getId()+ " a nombre de " + pasajero.getNombre();
+
+        if (reservaEstado) {
+            informacion += " ya está confirmada, ";
+        }else {
+            informacion += " no esta confirmada, ";
+        }
+
+        if (!ruta.tieneCupo()) {
+            informacion += "la ruta no tiene cupo disponible";
+        }else {
+            informacion += "y la ruta tiene cupo disponible.";
+        }
+
+        return informacion;
+
+    }
+
     public Long getId() {
         return id;
     }

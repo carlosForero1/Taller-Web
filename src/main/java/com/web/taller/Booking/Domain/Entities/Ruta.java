@@ -11,16 +11,35 @@ public class Ruta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private int cupo;
+    private int limiteDelCupo;
     private String nombreRuta;
     private double kilometrosRuta;
 
     public Ruta() {
     }
 
-    public Ruta(Long id, String nombreRuta, double kilometrosRuta) {
+    public Ruta(Long id, int cupo, int limiteDelCupo, String nombreRuta, double kilometrosRuta) {
         this.id = id;
+        this.cupo = cupo;
+        this.limiteDelCupo = limiteDelCupo;
         this.nombreRuta = nombreRuta;
         this.kilometrosRuta = kilometrosRuta;
+    }
+
+    public boolean tieneCupo() {
+        return cupo > 0 && cupo < limiteDelCupo;
+    }
+
+    public void reducirCupo() {
+        if (cupo <= 0) {
+            throw new IllegalStateException("No hay cupos disponibles.");
+        }
+        cupo--;
+    }
+
+    public void incrementarCupo() {
+        cupo++;
     }
 
     public Long getId() {
@@ -45,6 +64,22 @@ public class Ruta {
 
     public void setKilometrosRuta(double kilometrosRuta) {
         this.kilometrosRuta = kilometrosRuta;
+    }
+
+    public int getCupo() {
+        return cupo;
+    }
+
+    public void setCupo(int cupo) {
+        this.cupo = cupo;
+    }
+
+    public int getLimiteDelCupo() {
+        return limiteDelCupo;
+    }
+
+    public void setLimiteDelCupo(int limiteDelCupo) {
+        this.limiteDelCupo = limiteDelCupo;
     }
 
     @Override
