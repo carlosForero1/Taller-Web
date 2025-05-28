@@ -1,6 +1,6 @@
-package com.web.taller.Booking.Infrastructure.RepositoriesJpa;
+package com.web.taller.Booking.Infrastructure.repositorio.RepositoriesJpa;
 
-import com.web.taller.Booking.Domain.Entities.Reserva;
+import com.web.taller.Booking.Domain.Aggregate.Reserva;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

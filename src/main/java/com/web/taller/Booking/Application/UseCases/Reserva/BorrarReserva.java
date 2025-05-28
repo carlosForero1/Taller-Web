@@ -1,11 +1,16 @@
 package com.web.taller.Booking.Application.UseCases.Reserva;
 
-import com.web.taller.Booking.Infrastructure.Repositories.ReservaRepositorio;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.web.taller.Booking.Infrastructure.repositorio.Repositories.ReservaRepositorio;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BorrarReserva {
-    @Autowired
-    private ReservaRepositorio repositorio;
+
+    private final ReservaRepositorio repositorio;
+
+    public BorrarReserva(ReservaRepositorio repositorio) {
+        this.repositorio = repositorio;
+    }
 
     public boolean borrar(Long id){
         if (id != null) {

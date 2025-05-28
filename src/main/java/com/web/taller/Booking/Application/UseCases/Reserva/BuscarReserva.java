@@ -1,15 +1,19 @@
 package com.web.taller.Booking.Application.UseCases.Reserva;
 
-import com.web.taller.Booking.Domain.Entities.Reserva;
-import com.web.taller.Booking.Infrastructure.Repositories.ReservaRepositorio;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.web.taller.Booking.Domain.Aggregate.Reserva;
+import com.web.taller.Booking.Infrastructure.repositorio.Repositories.ReservaRepositorio;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class BuscarReserva {
-    @Autowired
-    private ReservaRepositorio repositorio;
+    private final ReservaRepositorio repositorio;
+
+    public BuscarReserva(ReservaRepositorio repositorio) {
+        this.repositorio = repositorio;
+    }
 
     public List<Reserva> BuscarPorNombrePasajero(String nombre) {
 

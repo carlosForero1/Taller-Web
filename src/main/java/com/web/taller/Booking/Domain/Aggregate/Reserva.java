@@ -1,5 +1,7 @@
-package com.web.taller.Booking.Domain.Entities;
+package com.web.taller.Booking.Domain.Aggregate;
 
+import com.web.taller.Booking.Domain.Entities.Pasajero;
+import com.web.taller.Booking.Domain.Entities.Ruta;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -10,10 +12,10 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     private Pasajero pasajero;
 
-    @OneToOne
+    @ManyToOne
     private Ruta ruta;
     private LocalDate fecha;
     private boolean reservaEstado;
@@ -23,6 +25,13 @@ public class Reserva {
 
     public Reserva(Long id, Pasajero pasajero, Ruta ruta, LocalDate fecha, boolean reservaEstado) {
         this.id = id;
+        this.pasajero = pasajero;
+        this.ruta = ruta;
+        this.fecha = fecha;
+        this.reservaEstado = reservaEstado;
+    }
+
+    public Reserva(Pasajero pasajero, Ruta ruta, LocalDate fecha, boolean reservaEstado) {
         this.pasajero = pasajero;
         this.ruta = ruta;
         this.fecha = fecha;

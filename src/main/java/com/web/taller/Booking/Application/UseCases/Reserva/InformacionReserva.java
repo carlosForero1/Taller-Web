@@ -1,15 +1,18 @@
 package com.web.taller.Booking.Application.UseCases.Reserva;
 
-import com.web.taller.Booking.Domain.Entities.Reserva;
-import com.web.taller.Booking.Infrastructure.Repositories.ReservaRepositorio;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.web.taller.Booking.Domain.Aggregate.Reserva;
+import com.web.taller.Booking.Infrastructure.repositorio.Repositories.ReservaRepositorio;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class InformacionReserva {
-    @Autowired
-    private ReservaRepositorio repositorio;
+    private final ReservaRepositorio repositorio;
 
+    public InformacionReserva(ReservaRepositorio repositorio) {
+        this.repositorio = repositorio;
+    }
 
     public String informacionReserva(Long id){
         List<Reserva> reserva = repositorio.findAll();

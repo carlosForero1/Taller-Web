@@ -11,14 +11,9 @@ public class Pasajero {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nombre;
 
-    private int tipoDocumento;
-    private int cedula;
-
-    private Date fechaNacimiento;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private EmailEntity email;
 
     public Pasajero() {

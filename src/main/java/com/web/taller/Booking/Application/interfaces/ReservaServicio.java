@@ -1,48 +1,24 @@
 package com.web.taller.Booking.Application.interfaces;
 
+import com.web.taller.Booking.API.Requests.ReservaRequest;
+import com.web.taller.Booking.API.Respone.ReservaResponse;
 import com.web.taller.Booking.Application.UseCases.Reserva.BorrarReserva;
 import com.web.taller.Booking.Application.UseCases.Reserva.BuscarReserva;
 import com.web.taller.Booking.Application.UseCases.Reserva.CrearReserva;
 import com.web.taller.Booking.Application.UseCases.Reserva.InformacionReserva;
-import com.web.taller.Booking.Domain.Entities.Reserva;
-import org.springframework.stereotype.Service;
+import com.web.taller.Booking.Domain.Aggregate.Reserva;
 
 import java.util.List;
 
-@Service
-public class ReservaServicio {
-    private final CrearReserva crearReserva;
-    private final BorrarReserva borrarReserva;
-    private final InformacionReserva informacionReserva;
-    private final BuscarReserva buscarReserva;
+public interface ReservaServicio {
 
-    public ReservaServicio(CrearReserva crearReserva,
-                           BorrarReserva borrarReserva,
-                           InformacionReserva informacionReserva,
-                           BuscarReserva buscarReserva) {
-        this.crearReserva = crearReserva;
-        this.borrarReserva = borrarReserva;
-        this.informacionReserva = informacionReserva;
-        this.buscarReserva = buscarReserva;
-    }
+    List<Reserva> buscarPorNombrePasajero(String nombre);
 
-    public List<Reserva> buscarPorNombrePasajero(String nombre) {
-        return buscarReserva.BuscarPorNombrePasajero(nombre);
-    }
+    boolean borrarReserva(Long id);
 
-    public boolean borrarReserva(Long id) {
-        return borrarReserva.borrar(id);
-    }
+    String obtenerInformacionReserva(Long id);
 
-    public String obtenerInformacionReserva(Long id) {
-        return informacionReserva.informacionReserva(id);
-    }
+    ReservaResponse crearReserva(ReservaRequest reserva);
 
-    public Reserva crearReserva(Reserva reserva) {
-        return crearReserva.crearReserva(reserva);
-    }
-
-    public List<Reserva> listaReservas() {
-        return informacionReserva.ListarReservas();
-    }
+    List<Reserva> listaReservas();
 }
